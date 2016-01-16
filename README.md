@@ -1,7 +1,7 @@
 ### vit_acad_web_api
 A repository for an api and web interface to the VITacademics extension.
 
-###API
+##API
 Send a get request on __[your_host]/get_posts/api/v1.0/get__ to get a json responce of the available posts in the following format:
 
 ####__json response__
