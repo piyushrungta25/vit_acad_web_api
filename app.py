@@ -37,7 +37,7 @@ def hello():
 def encode_json():
 	# cur=connect_db()
 	# results=get_result(cur)
-	db = MySQLdb.connect(host="localhost",port=3306,user="root",passwd="password",db="all_posts")
+	db = MySQLdb.connect(host="db4free.net",port=3306,user="piyushrungta25",passwd="d1dd88",db="new_test_db")
 	cur=db.cursor()
 	cur.execute("select * from posts")
 	results=cur.fetchall()
