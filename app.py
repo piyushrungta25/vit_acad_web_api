@@ -1,6 +1,7 @@
+from flask import Flask, jsonify
 import MySQLdb
 import time
-from flask import Flask, jsonify
+
 import datetime
 
 app = Flask(__name__)
@@ -83,4 +84,4 @@ def sample_insertion():
 		db.commit()
 	
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()
