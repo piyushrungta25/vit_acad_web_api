@@ -28,7 +28,7 @@ def helloception():
 
 @app.route('/')
 def hello():
-	return "hello"
+	return "This site is under construction. Please come back later."
 
 
 
