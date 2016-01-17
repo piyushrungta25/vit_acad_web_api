@@ -1,5 +1,5 @@
 ### vit_acad_web_api
-A repository for an api and web interface to the VITacademics extension.
+A repository for an api and web interface to the VITacademics extension which provides clubs and chapters to advertise their events and seminars using VITacademics app.
 
 ###API
 Send a get request on __[your_host]/get_posts/api/v1.0/get__ to get a json responce of the available posts in the following format:
