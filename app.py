@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify,render_template
 import MySQLdb
 import time
 
@@ -28,7 +28,7 @@ def helloception():
 
 @app.route('/')
 def hello():
-	return "This site is under construction. Please come back later."
+	return render_template('index.html')
 
 
 
@@ -84,4 +84,4 @@ def sample_insertion():
 		db.commit()
 	
 if __name__ == '__main__':
-	app.run()
+	app.run(debug=True)
