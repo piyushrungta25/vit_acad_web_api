@@ -7,13 +7,22 @@ import datetime
 app = Flask(__name__)
 
 def connect_db():
-	db = MySQLdb.connect(host="db4free.net",port=3306,user="piyushrungta25",passwd="d1dd88",db="new_test_db")
+	# db = MySQLdb.connect(host="db4free.net",port=3306,user="piyushrungta25",passwd="d1dd88",db="new_test_db")
+	db = MySQLdb.connect(host="localhost",port=3306,user="root",passwd="password",db="all_posts")
 	cur=db.cursor()
 	return cur
 
-def get_result(cur,timestamp=None):
-	if timestamp==None:
-		cur.execute("select * from posts")
+def get_result(cur,timestamp):
+	if timestamp==0:
+		cur.execute("select count(timestamp) from posts")
+		result=cur.fetchall()
+		no_of_rows=result[0][0]
+		
+		print no_of_rows
+		if no_of_rows<20:
+			cur.execute("select * from posts")
+		else:
+			cur.execute("select * from posts limit %d,%d"% (no_of_rows-20,20))
 		
 	else:
 		cur.execute("select * from posts where timestamp>%s"%(timestamp))
@@ -37,15 +46,12 @@ def hello():
 @app.route('/get_posts/api/v1.0/get',methods=['GET'])
 def encode_json():
 	cur=connect_db()
-	
-	client_timestamp=request.args.get('timestamp', '0')
-	
-	
+	client_timestamp=request.args.get('timestamp',0,type=int)
 	results=get_result(cur,client_timestamp)
-	
 	result=[]
 	
-	for post in results[-20:]:
+	
+	for post in results:
 		new_post={
 		'timestamp':post[0].isoformat(),
 		'club_name':post[1],
@@ -58,32 +64,8 @@ def encode_json():
 		}
 		result.append(new_post)
 	
-	return jsonify({'results':result,'status':'OK'})
+	return jsonify({'results':result,'no_of_posts':len(results),'status':'OK'})
 	
 
-
-
-def sample_insertion():
-	club_name="club_name"
-	event_name="event_name"
-	post_body="post_body"
-	event_date="event_date"
-	event_time="event_time"
-	event_venue="event_venue"
-	image_link="image_link"
-
-	for i in range(0,10):
-		time.sleep(2)
-		club_name="club_name"+str(i)
-		event_name="event_name"+str(i)
-		post_body="postbody"+str(i)
-		event_date="2016-0%s-0%s"%(i,i)
-		event_time="0%s:0%s:0%s"%(i,i,i)
-		event_venue="event_venue"+str(i)
-		image_link="image_link"+str(i)
-		command="insert into posts (club_name,event_name,post_body,event_date,event_time,event_venue,image_link) values ('%s','%s','%s','%s','%s','%s','%s')"%(club_name,event_name,post_body,event_date,event_time,event_venue,image_link)
-		cur.execute(command)
-		db.commit()
-	
 if __name__ == '__main__':
 	app.run(debug=True)
