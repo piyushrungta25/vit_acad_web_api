@@ -1,8 +1,9 @@
 ##API
 
-* Add timestamp in get request to send post newer than that timestamp
 * Error checking
+* Documentation
+* Cleanup
 
 ##Web interface
 
-* Make interface
+
