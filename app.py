@@ -1,4 +1,4 @@
-from flask import Flask, jsonify,render_template
+from flask import Flask, jsonify,render_template, request
 import MySQLdb
 import time
 
@@ -7,7 +7,8 @@ import datetime
 app = Flask(__name__)
 
 def connect_db():
-	
+	db = MySQLdb.connect(host="db4free.net",port=3306,user="piyushrungta25",passwd="d1dd88",db="new_test_db")
+	cur=db.cursor()
 	return cur
 
 def get_result(cur,timestamp=None):
@@ -33,17 +34,18 @@ def hello():
 
 
 # @app.route('/get_posts/api/v1.0/get',methods=['GET'])
-@app.route('/get_posts/api/v1.0/get')
+@app.route('/get_posts/api/v1.0/get',methods=['GET'])
 def encode_json():
-	# cur=connect_db()
-	# results=get_result(cur)
-	db = MySQLdb.connect(host="db4free.net",port=3306,user="piyushrungta25",passwd="d1dd88",db="new_test_db")
-	cur=db.cursor()
-	cur.execute("select * from posts")
-	results=cur.fetchall()
+	cur=connect_db()
+	
+	client_timestamp=request.args.get('timestamp', '0')
+	
+	
+	results=get_result(cur,client_timestamp)
+	
 	result=[]
-	# return "yo?"
-	for post in results:
+	
+	for post in results[-20:]:
 		new_post={
 		'timestamp':post[0].isoformat(),
 		'club_name':post[1],
