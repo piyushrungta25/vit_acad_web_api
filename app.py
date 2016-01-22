@@ -3,10 +3,11 @@ import MySQLdb
 import time
 import urllib
 import datetime
-import os
+# import os
 
 DEBUG = True
-SECRET_KEY =os.urandom(24)
+# SECRET_KEY =os.urandom(24)
+SECRET_KEY ='key'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
