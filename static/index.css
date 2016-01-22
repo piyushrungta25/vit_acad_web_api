@@ -1,0 +1,184 @@
+html,body
+{
+padding: 0;
+margin: 0;
+}
+
+
+INPUT:focus {
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 10px;
+	border: 2px solid #000;
+	outline: none;
+}
+
+P
+{
+margin-top: 2px;
+}
+
+.head-box
+{
+width: 40%;
+min-width: 170px;
+height: auto;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 25px;
+background-color: #000;
+border: 5px solid#FFF;
+padding: 8px;
+margin-left: 30%;
+margin-right: 30%;
+}
+
+.img-align
+{
+margin-left: 40%;
+margin-right: 40%;
+margin-top: 0;
+margin-bottom: 0;
+padding: 0;
+}
+
+.login_box
+{
+	float: left;
+    width: 30%;
+    min-width: 250px;
+    height: auto;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 40px;
+    margin-left: 9.5%;
+    margin-right: 9.5%;
+    margin-top: 75px;
+    margin-bottom: 150px;
+    background: url(../images/box-back3.jpg);
+    border: 5px solid #000; 
+}
+
+.sign_up_box
+{
+	float:left;
+    width: 30%;
+    min-width: 250px;
+    height: auto;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 40px;
+    margin-left: 9.5%;
+    margin-right: 9.5%;
+    margin-top: 75px;
+    margin-bottom: 150px;
+    background: url(../images/box-back3.jpg);
+    border: 5px solid #000; 
+}
+
+.font1
+{
+font-family: "Comic Sans MS", cursive, sans-serif;
+font-size: 25px;
+font-weight: bolder; 
+color: #000;
+margin-left: 30%;
+margin-right: 30%
+}
+
+.font2
+{
+font-family: "Comic Sans MS", cursive, sans-serif;
+font-size: 20px;
+font-weight: bolder; 
+color: #000;
+margin-left: 5%;
+margin-right: 5%;
+}
+
+.font3
+{
+font-family: "Comic Sans MS", cursive, sans-serif;
+font-size: 15px;
+font-weight: bolder; 
+color: #000;
+margin-left: 5%;
+margin-right: 5%;
+}
+.font-head
+{
+font-family: Arial;
+font-size: 40px;
+font-weight: bolder; 
+color: #FFF;
+text-align: center;
+margin-top: 30px;
+}
+
+.space1
+{
+margin-top: 20px;
+margin-bottom: 20px;
+margin-left: 10px;
+}
+
+.form
+{
+width: 60%;
+min-width: 80px;
+height: 20px;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 10px;
+border: 2px solid #000;
+padding: 2px;
+font-family: Arial;
+}
+
+.form1
+{
+width: 60%;
+min-width: 80px;
+height: 20px;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 10px;
+border: 2px solid #000;
+padding: 2px;
+margin-left: 1.5%;
+font-family: Arial;
+}
+
+.form2
+{
+width: 60%;
+min-width: 80px;
+height: 20px;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 10px;
+border: 2px solid #000;
+padding: 2px;
+margin-left: 3%;
+font-family: Arial;
+}
+.button
+{
+width: 37%;
+min-width: 120px;
+height: 25px;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 10px;
+background-color: #000;
+padding: 2px;
+font-family: Arial;
+font-size: 12px;
+color: #FFF;
+margin-left: 5%;
+margin-right: 5%;
+padding: 5px;
+}
+
+.error { background: #F0D6D6; padding: 0.5em; }
+

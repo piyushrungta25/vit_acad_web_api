@@ -1,33 +1,41 @@
+<!DOCTYPE HTML>
 <HTML>
 <HEAD>
-		<TITLE>VIT Clubs Portal </TITLE>
-		<LINK REL =Stylesheet TYPE ="text/css" HREF ="../static/style.css">
+	<TITLE> VIT Clubs Portal </TITLE>
+	<LINK REL =Stylesheet TYPE ="text/css" HREF ="../static/index.css">
 </HEAD>
-<BODY>
-	<P CLASS="header">VITacademics - Clubs & Chapters </P>
-	<DIV CLASS="img-space"> 
-		<IMG SRC="../images/logo.png" HEIGHT="128" WEIGHT="128">
-		<SPAN CLASS="imgtext">VITacademics</SPAN>
-		<br><p style="color:red;font-weight	:bold">This site is under construction. Please come back later.</p>
-		</DIV>
-		
-	<span CLASS="login_box font2">Login
-	<P CLASS="bottom-space"><FORM><span CLASS="font1">Username : </span>
-	<span><INPUT CLASS="form1" TYPE = "Text" Size = 20 Value = "" Name = "USERNAME" Maxlength="15" PLACEHOLDER="" REQUIRED></span>
-	</FORM></P>
-	<P CLASS="bottom-space"><FORM><span CLASS="font1">Password  : </span>
-	<span><INPUT CLASS="form1" TYPE = "Password" Size = 20 Value = "" Name = "PASSWORD" Maxlength="15" PLACEHOLDER="" REQUIRED></span>
-	</FORM></P>
-	<P><FORM><span CLASS="space2"><INPUT ID="button" TYPE="Submit" Value=" Login "></span>
-	<span CLASS="space3"><INPUT ID="button" TYPE="Submit" Value=" Forgot Password "></span>
-	</FORM></P>
-	<P><FORM CLASS="font1">Email ID : <INPUT CLASS="form1" TYPE = "Text" Size = 20 Value = "on clicking forgot password this will appear" Name = "EMAIL" PLACEHOLDER="" REQUIRED></FORM>
-	<p><FORM CLASS="space4"><INPUT ID="button" TYPE="Submit" Value=" Send request "></FORM></P>
-	</span>
-	<span CLASS="sign_up_box font2">Sign up<P CLASS="bottom-space2"></P>
-	<P CLASS="bottom-space font1">Verification is required for registration!</P>
-	<P CLASS="space5 font1">Email ID : <INPUT CLASS="form1" TYPE = "Text" Size = 20 Value = "" Name = "mailid" PLACEHOLDER="" REQUIRED></FORM></P>
-	<FORM CLASS="space5"><INPUT ID="button" TYPE="Submit" Value=" Verify "></FORM>
-	</span>
+<BODY background="../static/wall4.jpg">
+	<P CLASS="head-box font-head" align="center">VIT Clubs & Chapters </P>
+	<SPAN CLASS="login_box"><P><IMG SRC="../static/pin.png" CLASS="img-align"></P>
+	<P CLASS="font1">LOGIN</P>
+	{% if error %}<p class="error"><strong>Error:</strong> {{ error }}</p>{% endif %}
+	<SPAN><P CLASS="space1"><FORM CLASS="font2" action="{{ url_for('login') }}" method="post"><LABEL FOR="USRN">Username : </LABEL>
+	<INPUT ID="USRN" CLASS="form" TYPE = "Text" Name = "USERNAME" PLACEHOLDER="" REQUIRED>
+	</P></SPAN>
+	</SPAN>
+	<SPAN><P CLASS="space1"><LABEL FOR="PASSW">Password : </LABEL>
+	<INPUT ID="PASSW" CLASS="form1" TYPE = "Password" Name = "PASSWORD" PLACEHOLDER="" REQUIRED>
+	</P></SPAN>
+	</SPAN>
+	<P><SPAN><INPUT CLASS="button" TYPE = "Submit" VALUE="Forgot Password"></SPAN>
+	<SPAN><INPUT CLASS="button" TYPE = "Submit" VALUE="Login"></SPAN></FORM></P>
+	<SPAN><P CLASS="space1"><FORM CLASS="font2"><LABEL FOR="MAILID">Email ID : </LABEL>
+	<INPUT ID="MAILID" CLASS="form1" TYPE = "Text" Name = "MAILID" PLACEHOLDER="" REQUIRED>
+	</P></SPAN>
+	<P><SPAN><FORM><INPUT CLASS="button" TYPE = "Submit" VALUE="Send Request"></FORM></P></SPAN>
+	</SPAN>
+	<SPAN CLASS="sign_up_box"><P><IMG SRC="../static/pin.png" CLASS="img-align"></P>
+	<P CLASS="font1">SIGN UP</P>
+	<SPAN><P CLASS="space1"><FORM CLASS="font2"><LABEL FOR="CLUB">  Club : </LABEL>
+	<INPUT ID="CLUB" CLASS="form2" TYPE = "Text" Name = "CLUBN" PLACEHOLDER="" REQUIRED>
+	</P></SPAN>
+	</FORM></SPAN>
+	<SPAN><P CLASS="space1"><FORM CLASS="font2"><LABEL FOR="EMAIL">Email : </LABEL>
+	<INPUT ID="EMAIL" CLASS="form" TYPE = "Text" Name = "EMAIL" PLACEHOLDER="" REQUIRED>
+	</P></SPAN>
+	<P><SPAN><FORM><INPUT CLASS="button" TYPE = "Submit" VALUE="Verify"></FORM></P></SPAN>
+	<P CLASS="font3">Your request has been sent<BR>Verification is required for registration!
+	Please follow the steps given in the mail to complete your registration</BR></P>
+	</SPAN></P>
 </BODY>
 </HTML>
