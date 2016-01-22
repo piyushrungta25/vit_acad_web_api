@@ -13,8 +13,8 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 def connect_db():
-	# db = MySQLdb.connect(host="db4free.net",port=3306,user="piyushrungta25",passwd="d1dd88",db="new_test_db")
-	db = MySQLdb.connect(host="localhost",port=3306,user="root",passwd="password",db="all_posts")
+	db = MySQLdb.connect(host="db4free.net",port=3306,user="piyushrungta25",passwd="d1dd88",db="new_test_db")
+	# db = MySQLdb.connect(host="localhost",port=3306,user="root",passwd="password",db="all_posts")
 	cur=db.cursor()
 	return (db,cur)
 
