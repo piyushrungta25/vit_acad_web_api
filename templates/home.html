@@ -2,7 +2,7 @@
 <html>
    <head>
       <title> VIT clubs portal </title>
-      <LINK REL =Stylesheet TYPE ="text/css" HREF ="../static/home.css">
+      <LINK REL =Stylesheet TYPE ="text/css" HREF ="{{ url_for('static', filename='home.css') }}">
    </head>
    <body>
       <P class="head-box" style="text-align: center"><a class="font-head" href="./info.html">{{ session['username'] }}</a></P>
