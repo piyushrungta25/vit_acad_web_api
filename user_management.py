@@ -20,16 +20,6 @@ def logout():
 	
 
 
-@user_management.route('/home', methods=['GET', 'POST'])
-def home():
-	if 'logged_in' not in session or 'username' not in session:
-		session['messages'] =  "No active session"
-		return redirect(url_for('user_management.login'))
-		
-		# template for particular club
-	return render_template('home.html')
-	
-
 @user_management.route('/signup', methods=['GET', 'POST'])
 def signup():
 	
@@ -82,16 +72,17 @@ def login():
 		signup_error=session['forget_pass_error']
 		session.pop('signup_error', None)
 	
-	
-	
-		
 	if 'logged_in' in session:
 		g.cur.execute("select session_id from login_data where email='%s'"%(session['email']))
 		result=g.cur.fetchall()
 		result=result[0][0]
 		if session['session_id']==result:
-			return redirect(url_for('user_management.home'))
-			
+			return redirect(url_for('post_management.home'))
+		else:
+			session.pop('logged_in', None)
+			session.pop('session_id', None)
+			session.pop('username', None)
+			session.pop('email', None)
 	
 	if request.method == 'POST' :
 		g.cur.execute("select * from login_data where email='%s'"%(request.form['USERNAME']))
@@ -110,7 +101,7 @@ def login():
 			session['logged_in'] = True
 			session['username']=result[0][0]
 			session['email']=result[0][3]
-			return redirect(url_for('user_management.home'))
+			return redirect(url_for('post_management.home'))
 	
 	return render_template('index.html', login_cred_error=login_cred_error,msg=msg,forget_pass_error=forget_pass_error,signup_error=signup_error)
 

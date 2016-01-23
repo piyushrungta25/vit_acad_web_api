@@ -6,8 +6,6 @@ from email import encoders
 
 config_file='configuration'
 
-#text_box is for uodating the message box
-#body is a string containing the text for the e-maill body
 def send_mail(subject,body,reciever):
 	
 
@@ -22,15 +20,8 @@ def send_mail(subject,body,reciever):
 			sender=name[1].split('\n')[0]
 		elif name[0]=='SENDER_PASS':
 			password=name[1].split('\n')[0]
-		# elif name[0]=='RECEIVER_USERNAME':
-			# reciever=name[1].split('\n')[0]
-		# elif name[0]=='BODY':
-			# body=name[1].split('\n')[0]
-		# elif name[0]=='SUBJECT':
-			# subject=name[1].split('\n')[0]
 	
 	msg = MIMEMultipart()
-	
 	msg['From'] = sender
 	msg['To'] = reciever
 	msg['Subject'] = subject
