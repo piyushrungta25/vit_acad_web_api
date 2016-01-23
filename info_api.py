@@ -2,31 +2,66 @@ from flask import Flask, jsonify, request, g, Blueprint
 import urllib
 import datetime
 
-info_api = Blueprint('info_api', __name__)	
+info_api = Blueprint('info_api', __name__)
 
 
-def get_result(timestamp):
-	if timestamp==0:
-		g.cur.execute("select count(timestamp) from posts")
-		result=g.cur.fetchall()
-		no_of_rows=result[0][0]
+# def get_result(timestamp,club_name):
+	# if timestamp==0:
+		# g.cur.execute("select count(timestamp) from posts")
+		# result=g.cur.fetchall()
+		# no_of_rows=result[0][0]
 		
-		print no_of_rows
-		if no_of_rows<20:
-			g.cur.execute("select * from posts")
+		
+		# if no_of_rows<20:
+			# g.cur.execute("select * from posts")
+		# else:
+			# g.cur.execute("select * from posts limit %d,%d"% (no_of_rows-20,20))
+		
+	# else:
+		# g.cur.execute("select * from posts where timestamp>%s"%(timestamp))
+		
+	# result=g.cur.fetchall()
+	# return result
+
+def get_result(timestamp,club_name):
+	
+	if timestamp!=0:
+		if club_name!='':
+			g.cur.execute("select * from posts where timestamp>%s and club_name='%s'"%(timestamp,club_name))
+		
 		else:
-			g.cur.execute("select * from posts limit %d,%d"% (no_of_rows-20,20))
+			g.cur.execute("select * from posts where timestamp>%s"%(timestamp) )
 		
+		result=g.cur.fetchall()
+		return result
+	
 	else:
-		g.cur.execute("select * from posts where timestamp>%s"%(timestamp))
 		
-	result=g.cur.fetchall()
-	return result
+		if club_name=='':
+			g.cur.execute("select count(timestamp) from posts")
+			result=g.cur.fetchall()
+			no_of_rows=result[0][0]
+			
+			
+			if no_of_rows<20:
+				g.cur.execute("select * from posts")
+			else:
+				g.cur.execute("select * from posts limit %d,%d"% (no_of_rows-20,20))
+		
+		else:
+			g.cur.execute("select * from posts where club_name='%s'"%(club_name))
+		
+		result=g.cur.fetchall()
+		
+		return result
+	
+
 
 @info_api.route('/vitwebapp/api/v1.0/get_posts',methods=['GET'])
 def get_posts():
 	client_timestamp=request.args.get('timestamp',0,type=int)
-	results=get_result(client_timestamp)
+	club_name=request.args.get('club_name','')
+	results=get_result(client_timestamp,club_name)
 	result=[]
 	
 	

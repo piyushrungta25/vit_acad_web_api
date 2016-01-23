@@ -1,8 +1,8 @@
 ##API
 
-* Error checking
+* Error checking and handling
+* Input validation and purging
 * Documentation
-* Code Cleanup and split code in seperate logical modules [*URGENT*]
 
 ##Web interface
 

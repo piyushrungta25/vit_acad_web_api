@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, g, session, redirect, url_for, abort, escape, Blueprint
 import mailing
-
+import datetime
+import os
+import random
+import string
 user_management = Blueprint('user_management', __name__)	
 
 
@@ -19,7 +22,7 @@ def logout():
 
 @user_management.route('/home', methods=['GET', 'POST'])
 def home():
-	if 'logged_in' not in session:
+	if 'logged_in' not in session or 'username' not in session:
 		session['messages'] =  "No active session"
 		return redirect(url_for('user_management.login'))
 		
@@ -32,12 +35,29 @@ def signup():
 	
 	if request.method == 'POST' :
 		# validate name and email
+		# check if email is unique
 		club_name=request.form['CLUBN']
 		email=request.form['EMAIL']
-		
+		#generate unique key as current timestamp
+		unique_key=''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits + string.ascii_lowercase) for _ in range(32))
 		#send mail with unique key and store in db to verify later
+		g.cur.execute("insert into pending_verification(club_name,club_mail,unique_key) values('%s','%s','%s')"%(club_name,email,unique_key))
+		g.db.commit()
+		subject="Signup request from club %s at VIT clubs portal"%(club_name)
+		body='''\
+A request has been for registration on VIT clubs portal from your e-mail.  To verify you account follow the following steps.
+
+Post the following message to your facebook page.
+
+    Verification of %s on VIT clubs portal.
+    Verification code - %s
+    Get your club registered today and reach all vitians through VITacademics app.
+
+
+'''%(club_name,unique_key)
+		mailing.send_mail(subject,body,email)
 		
-		session['messages']='''Your request has been sent\nVerification is required for registration!\
+		session['messages']='''Your request has been received. Verification is required for registration!
 Please follow the steps given in the mail to complete your registration'''
 		
 	return redirect(url_for('user_management.login'))
@@ -66,10 +86,15 @@ def login():
 	
 		
 	if 'logged_in' in session:
-		return redirect(url_for('user_management.home'))
+		g.cur.execute("select session_id from login_data where email='%s'"%(session['email']))
+		result=g.cur.fetchall()
+		result=result[0][0]
+		if session['session_id']==result:
+			return redirect(url_for('user_management.home'))
+			
 	
 	if request.method == 'POST' :
-		g.cur.execute("select * from login_data where username='%s'"%(request.form['USERNAME']))
+		g.cur.execute("select * from login_data where email='%s'"%(request.form['USERNAME']))
 		result=g.cur.fetchall()
 		
 		if len(result)<1:
@@ -77,8 +102,14 @@ def login():
 		elif result[0][2]!=request.form['PASSWORD']:
 			login_cred_error='Invalid Password'
 		else:
+			
+			session_id=''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits + string.ascii_lowercase) for _ in range(64))
+			g.cur.execute("update login_data set session_id='%s' where email='%s'"%(session_id,request.form['USERNAME']))
+			g.db.commit()
+			session['session_id']=session_id
 			session['logged_in'] = True
 			session['username']=result[0][0]
+			session['email']=result[0][3]
 			return redirect(url_for('user_management.home'))
 	
 	return render_template('index.html', login_cred_error=login_cred_error,msg=msg,forget_pass_error=forget_pass_error,signup_error=signup_error)

@@ -3,6 +3,7 @@ import MySQLdb
 import os
 from info_api import info_api
 from user_management import user_management
+from post_management import post_management
 
 # from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -14,6 +15,7 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.register_blueprint(info_api)
 app.register_blueprint(user_management)
+app.register_blueprint(post_management)
 
 def connect_db():
 	# db = MySQLdb.connect(host="db4free.net",port=3306,user="piyushrungta25",passwd="d1dd88",db="new_test_db")

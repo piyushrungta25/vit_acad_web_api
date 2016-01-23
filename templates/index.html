@@ -14,7 +14,7 @@
 	<P CLASS="font1">LOGIN</P>
 	{% if login_cred_error %}<p class="error"><strong>Error:</strong> {{ login_cred_error }}</p>{% endif %}
 	<p CLASS="space1">
-	<FORM CLASS="font2" action="{{ url_for('user_management.login') }}" method="post" NAME="LOGIN	">
+	<FORM CLASS="font2" action="{{ url_for('user_management.login') }}" method="post" NAME="LOGIN">
 
 	<LABEL FOR="USRN">Username : </LABEL>
 	<INPUT ID="USRN" CLASS="form" TYPE = "Text" Name = "USERNAME" PLACEHOLDER="" REQUIRED>
@@ -27,7 +27,7 @@
 	{% if forget_pass_error %}<p class="error"><strong>Error:</strong> {{ forget_pass_error }}</p>{% endif %}
 	<FORM CLASS="font2" action="{{ url_for('user_management.reset_password') }}" method="post">
 	
-	<LABEL FOR="CLUB_NAME">Club Name : </LABEL>
+	<LABEL FOR="CLUB_NAME">Club : </LABEL>
 	<INPUT ID="CLUB_NAME" CLASS="form1" TYPE = "Text" Name = "CLUB_NAME" PLACEHOLDER="" REQUIRED><br>
 	<LABEL FOR="MAILID">Email ID : </LABEL>
 	<INPUT ID="MAILID" CLASS="form1" TYPE = "Text" Name = "MAILID" PLACEHOLDER="" REQUIRED>
