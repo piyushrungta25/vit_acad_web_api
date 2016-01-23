@@ -1,0 +1,146 @@
+html
+{
+height: auto;
+width: auto;
+background: linear-gradient(to top,#FFF,#FFF 50%,#3b5998 50%,#3b5998);
+background-repeat: no-repeat;
+}
+
+html,body
+{
+padding: 0;
+margin: 0;
+}
+
+
+INPUT:focus {
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 10px;
+	border: 2px solid #3b5998;
+	outline: none;
+}
+
+textarea:focus {
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 10px;
+	border: 2px solid #3b5998;
+	outline: none;
+	padding: 5px;
+}
+
+P
+{
+margin-top: 5px;
+}
+
+.head-box
+{
+width: 10%;
+min-width: 60px;
+height: auto;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 25px;
+background-color: #3b5998;
+padding: 8px;
+margin-top: 25px;
+margin-left:auto;
+margin-right:auto;
+margin-bottom: 10px;
+border: 4px solid#FFF;
+}
+
+.post-box
+{
+width: 80%;
+min-width: 200px;
+height: auto;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 25px;
+background-color: #FFF;
+margin: 10%;
+border: 2px solid#3b5998;
+padding: 10px;
+}
+
+.font-head
+{
+font-family: Arial;
+font-size: 20px;
+font-weight: bolder; 
+color: #FFF;
+text-align: center;
+margin-top: 30px;
+text-decoration: none;
+}
+
+.font1
+{
+font-family: "Comic Sans MS", cursive, sans-serif;
+font-size: 20px;
+font-weight: bolder; 
+color: #3b5998;
+margin-left: 5%;
+margin-right: 5%;
+text-decoration: none;
+}
+
+.space1
+{
+margin-top: 20px;
+margin-bottom: 20px;
+}
+
+.form
+{
+width: 40%;
+min-width: 80px;
+height: 20px;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 10px;
+border: 2px solid #3b5998;
+padding: 2px;
+font-family: Arial;
+}
+
+.form1
+{
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 10px;
+border: 2px solid #3b5998;
+padding: 2px;
+font-family: Arial;
+}
+
+.form2
+{
+width: 20%;
+min-width: 80px;
+height: 20px;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 10px;
+border: 2px solid #3b5998;
+padding: 2px;
+font-family: Arial;
+}
+
+.form3
+{
+width: 20%;
+min-width: 80px;
+height: 20px;
+-webkit-border-radius: 100px;
+-moz-border-radius: 100px;
+border-radius: 10px;
+border: 2px solid #3b5998;
+padding: 2px;
+font-family: Arial;
+margin-left: 1.6%;
+}
+

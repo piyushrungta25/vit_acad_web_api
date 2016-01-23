@@ -2,7 +2,7 @@
 
 * Error checking
 * Documentation
-* Cleanup
+* Code Cleanup and split code in seperate logical modules [*URGENT*]
 
 ##Web interface
 

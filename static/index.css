@@ -1,3 +1,11 @@
+html
+{
+height: auto;
+width: auto;
+background: linear-gradient(to top,#FFF,#FFF 50%,#3b5998 50%,#3b5998);
+background-repeat: no-repeat;
+}
+
 html,body
 {
 padding: 0;
@@ -9,7 +17,7 @@ INPUT:focus {
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
 	border-radius: 10px;
-	border: 2px solid #000;
+	border: 2px solid #3b5998;
 	outline: none;
 }
 
@@ -26,11 +34,10 @@ height: auto;
 -webkit-border-radius: 100px;
 -moz-border-radius: 100px;
 border-radius: 25px;
-background-color: #000;
-border: 5px solid#FFF;
+background-color: #3b5998;
 padding: 8px;
-margin-left: 30%;
-margin-right: 30%;
+margin: auto;
+border: 4px solid#FFF;
 }
 
 .img-align
@@ -51,12 +58,13 @@ padding: 0;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 40px;
-    margin-left: 9.5%;
-    margin-right: 9.5%;
+    margin-left: 9.42%;
+    margin-right: 9.42%;
     margin-top: 75px;
-    margin-bottom: 150px;
-    background: url(../images/box-back3.jpg);
-    border: 5px solid #000; 
+    margin-bottom: 75px;
+    background-color: #FFF;
+    padding: 5px;
+    border: 2px solid#3b5998;
 }
 
 .sign_up_box
@@ -68,12 +76,13 @@ padding: 0;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 40px;
-    margin-left: 9.5%;
-    margin-right: 9.5%;
+    margin-left: 9.42%;
+    margin-right: 9.42%;
     margin-top: 75px;
-    margin-bottom: 150px;
-    background: url(../images/box-back3.jpg);
-    border: 5px solid #000; 
+    margin-bottom: 75px;
+    background-color: #FFF;
+    padding: 5px;
+    border: 2px solid#3b5998;
 }
 
 .font1
@@ -81,7 +90,7 @@ padding: 0;
 font-family: "Comic Sans MS", cursive, sans-serif;
 font-size: 25px;
 font-weight: bolder; 
-color: #000;
+color: #3b5998;
 margin-left: 30%;
 margin-right: 30%
 }
@@ -91,7 +100,7 @@ margin-right: 30%
 font-family: "Comic Sans MS", cursive, sans-serif;
 font-size: 20px;
 font-weight: bolder; 
-color: #000;
+color: #3b5998;
 margin-left: 5%;
 margin-right: 5%;
 }
@@ -101,7 +110,7 @@ margin-right: 5%;
 font-family: "Comic Sans MS", cursive, sans-serif;
 font-size: 15px;
 font-weight: bolder; 
-color: #000;
+color: #3b5998;
 margin-left: 5%;
 margin-right: 5%;
 }
@@ -119,7 +128,6 @@ margin-top: 30px;
 {
 margin-top: 20px;
 margin-bottom: 20px;
-margin-left: 10px;
 }
 
 .form
@@ -130,7 +138,7 @@ height: 20px;
 -webkit-border-radius: 100px;
 -moz-border-radius: 100px;
 border-radius: 10px;
-border: 2px solid #000;
+border: 2px solid #3b5998;
 padding: 2px;
 font-family: Arial;
 }
@@ -143,7 +151,7 @@ height: 20px;
 -webkit-border-radius: 100px;
 -moz-border-radius: 100px;
 border-radius: 10px;
-border: 2px solid #000;
+border: 2px solid #3b5998;
 padding: 2px;
 margin-left: 1.5%;
 font-family: Arial;
@@ -157,7 +165,7 @@ height: 20px;
 -webkit-border-radius: 100px;
 -moz-border-radius: 100px;
 border-radius: 10px;
-border: 2px solid #000;
+border: 2px solid #3b5998;
 padding: 2px;
 margin-left: 3%;
 font-family: Arial;
@@ -170,7 +178,7 @@ height: 25px;
 -webkit-border-radius: 100px;
 -moz-border-radius: 100px;
 border-radius: 10px;
-background-color: #000;
+background-color: #3b5998;
 padding: 2px;
 font-family: Arial;
 font-size: 12px;
@@ -182,3 +190,5 @@ padding: 5px;
 
 .error { background: #F0D6D6; padding: 0.5em; }
 
+Status API Training Shop Blog About Pricing
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help

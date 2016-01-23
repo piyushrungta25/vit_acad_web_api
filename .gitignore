@@ -2,4 +2,6 @@
 /resources
 *.swp
 *.pyc
+*.bak
 populate.py
+*~

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+   <head>
+      <title> VIT clubs portal </title>
+      <LINK REL =Stylesheet TYPE ="text/css" HREF ="../static/home.css">
+   </head>
+   <body>
+      <P class="head-box" style="text-align: center"><a class="font-head" href="./info.html">{{session['username']}}</a></P>
+            <P class="head-box" style="text-align: center"><a class="font-head" href="{{ url_for('user_management.logout') }}">Logout</a></P>
+      <div class="post-box">
+         <p><a class="font1" href="./home.html">Create Post</a> / <a class="font1" href="./edit-post.html">Edit post</a>
+         
+         <p><label class="font1" for="evntn">Event Name : </label> <input id="evntn" class="form" type="text" name="event-name" placeholder="" required>
+         <p><label class="font1" for="date">Date : </label> <input id="date" class="form2" type="text" name="date" placeholder="" required>
+         <p><label class="font1" for="time">Time : </label> <input id="time" class="form2" type="text" name="time" placeholder="" required>
+         <p><label class="font1" for="place">Place :</label> <input id="place" class="form2" type="text" name="place" placeholder="" required>
+         <p class="font1" for="about">About the event : 
+         <p><textarea rows="10" cols="100" class="form1" name="about" placeholder="" required style="margin-left: 5%"></textarea></p>
+         <p><label class="font1" for="img">Attachment :</label> <input id="img" type="file" name="img" value="Choose File">
+         <p class="font1">Event Manager</p>
+         <p><label class="font1" for="co1">Name :  </label> <input id="co1" class="form3" type="text" name="name">
+         <p><label class="font1" for="phno">Number :</label> <input id="phno" class="form2" type="text" name="phno">
+      </div>
+   </body>
+</html>
+
+

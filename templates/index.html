@@ -3,39 +3,71 @@
 <HEAD>
 	<TITLE> VIT Clubs Portal </TITLE>
 	<LINK REL =Stylesheet TYPE ="text/css" HREF ="../static/index.css">
+	
 </HEAD>
-<BODY background="../static/wall4.jpg">
-	<P CLASS="head-box font-head" align="center">VIT Clubs & Chapters </P>
-	<SPAN CLASS="login_box"><P><IMG SRC="../static/pin.png" CLASS="img-align"></P>
+	<BODY>
+	<P CLASS="head-box font-head">VIT Clubs & Chapters </P>
+	{% if msg %}
+         <p class="error" align="center">{{ msg }}</p>
+         {% endif %}
+	<SPAN CLASS="login_box">
 	<P CLASS="font1">LOGIN</P>
-	{% if error %}<p class="error"><strong>Error:</strong> {{ error }}</p>{% endif %}
-	<SPAN><P CLASS="space1"><FORM CLASS="font2" action="{{ url_for('login') }}" method="post"><LABEL FOR="USRN">Username : </LABEL>
+	{% if login_cred_error %}<p class="error"><strong>Error:</strong> {{ login_cred_error }}</p>{% endif %}
+	<p CLASS="space1">
+	<FORM CLASS="font2" action="{{ url_for('user_management.login') }}" method="post" NAME="LOGIN	">
+
+	<LABEL FOR="USRN">Username : </LABEL>
 	<INPUT ID="USRN" CLASS="form" TYPE = "Text" Name = "USERNAME" PLACEHOLDER="" REQUIRED>
-	</P></SPAN>
-	</SPAN>
-	<SPAN><P CLASS="space1"><LABEL FOR="PASSW">Password : </LABEL>
-	<INPUT ID="PASSW" CLASS="form1" TYPE = "Password" Name = "PASSWORD" PLACEHOLDER="" REQUIRED>
-	</P></SPAN>
-	</SPAN>
+	<LABEL FOR="PASSW">Password : </LABEL>
+	<INPUT ID="USRN" CLASS="form1" TYPE = "Password" Name = "PASSWORD" PLACEHOLDER="" REQUIRED>
+	</p>
 	<P><SPAN><INPUT CLASS="button" TYPE = "Submit" VALUE="Forgot Password"></SPAN>
-	<SPAN><INPUT CLASS="button" TYPE = "Submit" VALUE="Login"></SPAN></FORM></P>
-	<SPAN><P CLASS="space1"><FORM CLASS="font2"><LABEL FOR="MAILID">Email ID : </LABEL>
+	<SPAN><INPUT CLASS="button" TYPE = "Submit" VALUE="Login" FOR="LOGIN"></SPAN></FORM></P>
+	<P CLASS="space1">
+	{% if forget_pass_error %}<p class="error"><strong>Error:</strong> {{ forget_pass_error }}</p>{% endif %}
+	<FORM CLASS="font2" action="{{ url_for('user_management.reset_password') }}" method="post">
+	
+	<LABEL FOR="CLUB_NAME">Club Name : </LABEL>
+	<INPUT ID="CLUB_NAME" CLASS="form1" TYPE = "Text" Name = "CLUB_NAME" PLACEHOLDER="" REQUIRED><br>
+	<LABEL FOR="MAILID">Email ID : </LABEL>
 	<INPUT ID="MAILID" CLASS="form1" TYPE = "Text" Name = "MAILID" PLACEHOLDER="" REQUIRED>
-	</P></SPAN>
-	<P><SPAN><FORM><INPUT CLASS="button" TYPE = "Submit" VALUE="Send Request"></FORM></P></SPAN>
+	
+	</P>
+	<P><INPUT CLASS="button" TYPE = "Submit" VALUE="Send Request"></FORM></P>
 	</SPAN>
-	<SPAN CLASS="sign_up_box"><P><IMG SRC="../static/pin.png" CLASS="img-align"></P>
+	
+	
+	<SPAN CLASS="sign_up_box">
+	
 	<P CLASS="font1">SIGN UP</P>
-	<SPAN><P CLASS="space1"><FORM CLASS="font2"><LABEL FOR="CLUB">  Club : </LABEL>
+	
+	{% if signup_error %}<p class="error"><strong>Error:</strong> {{ signup_error }}</p>{% endif %}
+	
+	
+	<P CLASS="space1">	
+	<FORM CLASS="font2" action="{{ url_for('user_management.signup') }}" method="post">
+
+
+	<LABEL FOR="CLUB">  Club : </LABEL>
 	<INPUT ID="CLUB" CLASS="form2" TYPE = "Text" Name = "CLUBN" PLACEHOLDER="" REQUIRED>
-	</P></SPAN>
-	</FORM></SPAN>
-	<SPAN><P CLASS="space1"><FORM CLASS="font2"><LABEL FOR="EMAIL">Email : </LABEL>
+	
+	
+
+	<LABEL FOR="EMAIL">Email : </LABEL>
 	<INPUT ID="EMAIL" CLASS="form" TYPE = "Text" Name = "EMAIL" PLACEHOLDER="" REQUIRED>
-	</P></SPAN>
-	<P><SPAN><FORM><INPUT CLASS="button" TYPE = "Submit" VALUE="Verify"></FORM></P></SPAN>
-	<P CLASS="font3">Your request has been sent<BR>Verification is required for registration!
-	Please follow the steps given in the mail to complete your registration</BR></P>
-	</SPAN></P>
-</BODY>
+	</P>
+	
+	<P><INPUT CLASS="button" TYPE = "Submit" VALUE="Verify"></P>
+
+	</FORM>
+	</P>
+	
+	
+
+	
+	</SPAN>
+	
+	
+	
+	</BODY>
 </HTML>

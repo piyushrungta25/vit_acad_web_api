@@ -1,0 +1,6 @@
+!configuration_file
+
+MAILING_DETAILS:
+SENDER_USERNAME:vitclubsportal@gmail.com
+SENDER_PASS:str0ngP@ssw0rd
+EOF
