@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+   <head>
+      <title> VIT clubs portal - All posts</title>
+      <LINK REL =Stylesheet TYPE ="text/css" HREF ="../static/home.css">
+   </head>
+   <body>
+	<h1>{{ session['username'] }}<h1>
+		
+	 <ul class=entries>
+		 {% if entries %}
+  {% for entry in entries %}
+    <FORM CLASS="font2" action="{{ url_for('post_management.edit_post') }}" method="post">
+    <li><h2>{{ entry[2] }}</h2>{{ entry[4] }}  {{ entry[5] }}<br>{{ entry[6] }}<br>{{ entry[8] }}<br>
+    {{ entry[3] }}
+    <img src="{{ entry[7] }}">
+    
+    <input id="timestamp" type="text" name="timestamp" placeholder="" style="display: none" value="{{ entry[0] }}">
+    
+    <INPUT class="button" TYPE="Submit" VALUE="Edit">
+    </form>
+  {% else %}
+    <li><em>No posts here so far</em>
+  {% endfor %}
+  {% endif %}
+  </ul>
+	
+	
+	
+	
+	</body>
+</html>

@@ -2,29 +2,37 @@ from flask import Flask, request, g, Blueprint, session, redirect, url_for, rend
 
 post_management = Blueprint('post_management', __name__)
 
-@post_management.route('/home', methods=['GET', 'POST'])
-def home():
-	if 'logged_in' not in session or 'username' not in session or 'session_id' not in session:
-		session['messages'] =  "No active session"
-		return redirect(url_for('user_management.login'))
+def valid_session():
+	if 'logged_in' not in session or 'username' not in session or 'session_id' not in session or 'email' not in session:
+		# session['messages'] =  "No active session"
+		return False
 		
 	g.cur.execute("select session_id from login_data where email='%s'"%(session['email']))
 	result=g.cur.fetchall()
 	result=result[0][0]
 	if session['session_id']==result:
-		msg=None
-		if 'post_msg' in session:
-			msg=session['post_msg']
-			session.pop('post_msg', None)
-		return render_template('home.html',msg=msg)
-	
+		return True
+		
 	else:
 		#pop all session entries
 		session.pop('logged_in', None)
 		session.pop('session_id', None)
 		session.pop('username', None)
 		session.pop('email', None)
-		return redirect(url_for('login'))
+		return False
+		# return redirect(url_for('login'))
+
+@post_management.route('/home', methods=['GET', 'POST'])
+def home():
+	if not valid_session():
+		# session['messages'] =  "No active session"
+		return redirect(url_for('user_management.login'))
+	
+	msg=None
+	if 'post_msg' in session:
+		msg=session['post_msg']
+		session.pop('post_msg', None)
+	return render_template('home.html',msg=msg)
 	
 @post_management.route('/new_post', methods=['POST'])
 def new_post():
@@ -60,3 +68,55 @@ CURRENT_TIMESTAMP , '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'\
 		g.db.commit()
 		session['post_msg']="New Entry added successfully!"
 		return redirect(url_for('post_management.home'))
+
+
+@post_management.route('/all_posts')
+def all_posts():
+	if not valid_session():
+		return redirect(url_for('user_management.login'))
+	
+	g.cur.execute("select * from posts where club_name='%s'"%session['username'])
+	posts=g.cur.fetchall()
+	
+	return render_template('all_posts.html',entries=posts)
+	
+@post_management.route('/edit_post',methods=['POST'])
+def edit_post():
+	if not valid_session():
+		return redirect(url_for('user_management.login'))
+	ts=request.form['timestamp']
+	ts=ts.replace(' ','')
+	ts=ts.replace('-','')
+	ts=ts.replace(':','')
+	g.cur.execute('select * from posts where timestamp=%s'%(ts))
+	r=g.cur.fetchall()
+	r=r[0]
+	a=''
+	for i in r:
+		a=a+str(i)+'<br>'
+	
+	return a
+
+@post_management.route('/club_info')
+def club_info():
+	if not valid_session():
+		return redirect(url_for('user_management.login'))
+	
+	g.cur.execute("select * from club_info where club_name='%s'"%(session['username']))
+	res=g.cur.fetchall()
+	res=res[0]
+	return render_template('club_info.html',info=res)
+
+@post_management.route('/edit_info',methods=['POST'])
+def edit_info():
+	if not valid_session():
+		return redirect(url_for('user_management.login'))
+	
+	g.cur.execute("select * from club_info where club_name='%s'"%(session['username']))
+	res=g.cur.fetchall()
+	res=res[0]
+	a=''
+	for i in res:
+		a=a+str(i)+'<br>'
+	
+	return a

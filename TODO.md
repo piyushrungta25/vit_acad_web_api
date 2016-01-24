@@ -1,9 +1,9 @@
-##API
+##Web interface
 
 * Error checking and handling
 * Input validation and purging
 * Documentation
-
-##Web interface
-
+* logging functionality
+* asthetics
+* editing page
 

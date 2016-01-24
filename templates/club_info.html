@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+   <head>
+      <title> VIT clubs portal - {{ session['username'] }}</title>
+      <LINK REL =Stylesheet TYPE ="text/css" HREF ="../static/home.css">
+   </head>
+   
+   
+   <body>
+	   <h1>{{ session['username'] }}</h1>
+	   <br>
+	   
+	   <FORM CLASS="font2" action="{{ url_for('post_management.edit_info') }}" method="post">
+	   <b>Description :</b>{{ info[2] }}<br>
+	   <b>Contact info :</b>{{ info[3] }}<br>
+	   <img src="{{ info[1] }}">
+		<input id="club_name" type="text" name="club_name" placeholder="" style="display: none" value="{{ info[0] }}">
+		<INPUT class="button" TYPE="Submit" VALUE="Edit">
+	</form>
+
+
+	</body>
+</html>
+

@@ -15,6 +15,8 @@ def logout():
 	
 	session.pop('logged_in', None)
 	session.pop('username', None)
+	session.pop('email', None)
+	session.pop('session_id', None)
 	session['messages'] = "Logged out successfully!"
 	return redirect(url_for('user_management.login'))
 	
