@@ -7,8 +7,6 @@ from post_management import post_management
 
 # from werkzeug.security import generate_password_hash, check_password_hash
 
-
-
 DEBUG = True
 SECRET_KEY =os.urandom(24)
 
