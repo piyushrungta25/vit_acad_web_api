@@ -6,12 +6,10 @@ A repository for an api and web interface to the VITacademics extension which pr
 ##### Getting Posts
 **Usage:**
 Request is sent as 
->[your_host]/vitwebapp/api/v1.0/get_posts
+>[your_host]/vitwebapp/api/v1.0/get_posts?timestamp=[timestamp]&club_name=[club_name]
 
-or
->[your_host]/vitwebapp/api/v1.0/get_posts?timestamp=[timestamp]
-
-If GET paramete timestamp is not specified or is 0, latest 20 posts are sent. In case a valid timestamp is passed, all posts newer then taht is sent in the format below.
+Both timestamp and club_name are optional.
+If GET paramete timestamp is not specified or is 0, latest 20 posts are sent. If club_name is passed all posts by that club is sent. In case a valid timestamp is passed, all posts newer then that is sent in the format below.
 
 **JSON response**
 ```json
