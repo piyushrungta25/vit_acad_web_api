@@ -120,3 +120,13 @@ def edit_info():
 		a=a+str(i)+'<br>'
 	
 	return a
+
+# @post_management.route('update_posts',methods=['POST'])
+# def update_posts():
+	
+	# if not valid_login():
+		# return redirect(url_for('login'))
+	
+	# g.cur.execute('UPDATE posts SET timestamp=CURRENT_TIMESTAMP, event_name='event-name',club_name='club_name2',post_body='post-body',event_date='20160202',event_time='03:03:03',event_venue='event-venue',image_link='image-link',event_manager='event-manager',evnt_mngr_phno='event-mngr' where timestamp=20160119202315')
+	
+	# pass
