@@ -2,31 +2,43 @@
 <html>
    <head>
       <title> VIT clubs portal - All posts</title>
-      <LINK REL =Stylesheet TYPE ="text/css" HREF ="../static/home.css">
+      <LINK REL =Stylesheet TYPE ="text/css" HREF ="{{ url_for('static', filename='home.css') }}">
    </head>
-   <body>
-	<h1>{{ session['username'] }}<h1>
-		
-	 <ul class=entries>
-		 {% if entries %}
-  {% for entry in entries %}
-    <FORM CLASS="font2" action="{{ url_for('post_management.edit_post') }}" method="post">
-    <li><h2>{{ entry[2] }}</h2>{{ entry[4] }}  {{ entry[5] }}<br>{{ entry[6] }}<br>{{ entry[8] }}<br>
-    {{ entry[3] }}
-    <img src="{{ entry[7] }}">
-    
-    <input id="timestamp" type="text" name="timestamp" placeholder="" style="display: none" value="{{ entry[0] }}">
-    
-    <INPUT class="button" TYPE="Submit" VALUE="Edit">
-    </form>
-  {% else %}
-    <li><em>No posts here so far</em>
-  {% endfor %}
-  {% endif %}
-  </ul>
-	
-	
-	
-	
+   <body background="{{ url_for('static', filename='background.jpg') }}">
+      <DIV><table class="table-top">
+      			<tr>
+      			<td><a class="font-head" href="{{ url_for('post_management.club_info') }}">{{ session['username'] }}</a></td>
+      			<td><a class="font-head" href="{{ url_for('post_management.home') }}">Create Post</a></td>
+      			<td><a class="font-head" href="{{ url_for('post_management.all_posts') }}">View post</a></td>
+      			<td><a class="font-head" href="{{ url_for('user_management.logout') }}">Logout</a></td
+      			</tr>
+      			</table>
+		</DIV>
+	<div align="center">
+      <div class="post-box" align="left" style="overflow-y: scroll">  
+	 		<ul>
+		 	{% if entries %}
+  			{% for entry in entries %}
+    		<FORM action="{{ url_for('post_management.edit_post') }}" method="post">
+    		<li class="list-box" style="padding: 10px;">
+    		<table>
+    		<tr>
+    		<td class="font1" width="43%" style="padding:10px"><img src="{{ entry[7] }}" width="256" height="256"></td>
+    		<td class="font1" width="43%" style="padding:10px"><br>{{ entry[2] }}</br><br>{{ entry[4] }}</br><br>{{ entry[5] }}</br><br>{{ entry[6] }}
+    		<br><input id="timestamp" type="text" name="timestamp" placeholder="" style="display: none" value="{{ entry[0] }}"></br></td>
+   			<td class="font1" width="43%" style="padding:10px" ><INPUT class="button" TYPE="Submit" VALUE="Edit"></td>
+    		</tr>
+    		</table>
+			</li>
+    		</form>
+  			{% else %}
+    		<li><em>No posts here so far</em>
+  			{% endfor %}
+  			{% endif %}
+  			</ul>
+	</div>
+   </DIV>
+   
+<DIV CLASS="head-box font-foot">Contact us   |   Lazycoders </DIV>
 	</body>
 </html>

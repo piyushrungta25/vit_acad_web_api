@@ -3,64 +3,64 @@
 <HEAD>
 	<TITLE> VIT Clubs Portal </TITLE>
 	<LINK REL =Stylesheet TYPE ="text/css" HREF ="{{ url_for('static', filename='index.css') }}">
-	
 </HEAD>
-	<BODY>
-	<P CLASS="head-box font-head">VIT Clubs & Chapters </P>
+
+<BODY background="{{ url_for('static', filename='background.jpg') }}" >
+	<DIV CLASS="head-box font-head"><img src="{{ url_for('static', filename='icon.png') }}"> VIT Club Calendar </DIV>
 	{% if msg %}
-         <p class="error" align="center">{{ msg }}</p>
-         {% endif %}
-	<SPAN CLASS="login_box">
-	<P CLASS="font1">LOGIN</P>
-	{% if login_cred_error %}<p class="error"><strong>Error:</strong> {{ login_cred_error }}</p>{% endif %}
-	<p CLASS="space1">
-	<FORM CLASS="font2" action="{{ url_for('user_management.login') }}" method="post" NAME="LOGIN">
+    <p class="error" align="center">{{ msg }}</p>
+	{% endif %}
+<div align="center">
+	<DIV class="login_box" align="left">
+		<table width="100%">
+		<tr>
+		<td CLASS="font1"  align="center" width="50%">LOGIN{% if login_cred_error %}<p class="error"><strong>Error:</strong> {{ login_cred_error }}</p>{% endif %}</td>
+		<td CLASS="font1"  align="center" width="50%">FORGOT-PASSWORD{% if forget_pass_error %}<p class="error"><strong>Error:</strong> {{ forget_pass_error }}</p>{% endif %}</td>
+		</tr>
+		<tr>
+		<td><FORM action="{{ url_for('user_management.login') }}" method="post" NAME="LOGIN">
+				<table width="80%">
+				<tr><td class="font2" ID="LOGIN">Username : </td>
+				<td><INPUT CLASS="form space1" TYPE = "Text" PLACEHOLDER="" REQUIRED NAME="USERNAME"></td></tr>
+				<tr><td class="font2" ID="LOGIN">Password : </td>
+				<td><INPUT CLASS="form space1" TYPE = "Password" Name = "PASSWORD" PLACEHOLDER="" REQUIRED></td></tr>
+				</table>
+				<DIV align="center"><INPUT CLASS="button space1" TYPE = "Submit" VALUE="Login" FOR="LOGIN"></DIV></FORM>
+		</td>
+		<td><FORM action="{{ url_for('user_management.reset_password') }}" method="post" NAME="FMAIL">
+				<table width="80%">
+				<tr><td class="font2">Club Name : </td>
+				<td><INPUT ID="CLUB_NAME" CLASS="form space1" TYPE = "Text" Name = "CLUB_NAME" PLACEHOLDER="" REQUIRED></td></tr>
+				<tr><td class="font2">Email ID : </td>
+				<td><INPUT ID="MAILID" CLASS="form space1" TYPE = "Text" Name = "MAILID" PLACEHOLDER="" REQUIRED></td></tr>
+				</table>
+				<DIV align="center"><INPUT CLASS="button" TYPE = "Submit" VALUE="Send Request" FOR="FMAIL"></DIV></FORM>
+			
+		</td>
+		</tr>
+		</table>
+	</DIV>
+</div>
 
-	<LABEL FOR="USRN">Username : </LABEL>
-	<INPUT ID="USRN" CLASS="form" TYPE = "Text" Name = "USERNAME" PLACEHOLDER="" REQUIRED>
-	<LABEL FOR="PASSW">Password : </LABEL>
-	<INPUT ID="USRN" CLASS="form1" TYPE = "Password" Name = "PASSWORD" PLACEHOLDER="" REQUIRED>
-	</p>
-	<P><SPAN><INPUT CLASS="button" TYPE = "Submit" VALUE="Forgot Password"></SPAN>
-	<SPAN><INPUT CLASS="button" TYPE = "Submit" VALUE="Login" FOR="LOGIN"></SPAN></FORM></P>
-	<P CLASS="space1">
-	{% if forget_pass_error %}<p class="error"><strong>Error:</strong> {{ forget_pass_error }}</p>{% endif %}
-	<FORM CLASS="font2" action="{{ url_for('user_management.reset_password') }}" method="post">
-	
-	<LABEL FOR="CLUB_NAME">Club : </LABEL>
-	<INPUT ID="CLUB_NAME" CLASS="form1" TYPE = "Text" Name = "CLUB_NAME" PLACEHOLDER="" REQUIRED><br>
-	<LABEL FOR="MAILID">Email ID : </LABEL>
-	<INPUT ID="MAILID" CLASS="form1" TYPE = "Text" Name = "MAILID" PLACEHOLDER="" REQUIRED>
-	
-	</P>
-	<P><INPUT CLASS="button" TYPE = "Submit" VALUE="Send Request"></FORM></P>
-	</SPAN>
-	
-	
-	<SPAN CLASS="sign_up_box">
-	
-	<P CLASS="font1">SIGN UP</P>
-	
+<DIV CLASS="sign_up_box">
+	<DIV class="font1" align="center">SIGN-UP</DIV>
 	{% if signup_error %}<p class="error"><strong>Error:</strong> {{ signup_error }}</p>{% endif %}
-	
-	
-	<P CLASS="space1">	
+	<DIV CLASS="space1">	
 	<FORM CLASS="font2" action="{{ url_for('user_management.signup') }}" method="post">
-
-
-	<LABEL FOR="CLUB">  Club : </LABEL>
-	<INPUT ID="CLUB" CLASS="form2" TYPE = "Text" Name = "CLUBN" PLACEHOLDER="" REQUIRED>
-	
-	
-
-	<LABEL FOR="EMAIL">Email : </LABEL>
-	<INPUT ID="EMAIL" CLASS="form" TYPE = "Text" Name = "EMAIL" PLACEHOLDER="" REQUIRED>
-	</P>
-	
-	<P><INPUT CLASS="button" TYPE = "Submit" VALUE="Verify"></P>
-
+	<table>
+	<tr><td>Club Name : </td>
+	<td><INPUT ID="CLUB" CLASS="form space1" TYPE = "Text" Name = "CLUBN" PLACEHOLDER="" REQUIRED></td></tr>
+	<tr><td>Email ID : </td>
+	<td><INPUT ID="EMAIL" CLASS="form space1" TYPE = "Text" Name = "EMAIL" PLACEHOLDER="" REQUIRED></td></tr>
+	</table>
+	<DIV align="center"><INPUT CLASS="button" TYPE = "Submit" VALUE="Verify"></DIV>
 	</FORM>
-	</P>
-	</SPAN>
-	</BODY>
-</HTML>
+	</div>
+</DIV>
+</div>
+
+<DIV CLASS="head-box font-foot">Contact us   |   Lazycoders </DIV>
+</body>
+
+
+</html>			
