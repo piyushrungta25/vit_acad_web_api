@@ -1,38 +1,47 @@
-
-
 <!doctype html>
 <html>
    <head>
       <title> VIT clubs portal </title>
-      <LINK REL =Stylesheet TYPE ="text/css" HREF ="../static/home.css">
+      <LINK REL =Stylesheet TYPE ="text/css" HREF ="{{ url_for('static', filename='home.css') }}">
    </head>
-   <body>
-      <P class="head-box" style="text-align: center"><a class="font-head" href="{{ url_for('post_management.club_info') }}">{{ session['username'] }}</a></P>
-      <P class="head-box" style="text-align: center"><a class="font-head" href="{{ url_for('user_management.logout') }}">Logout</a></P>
+   <body background="{{ url_for('static', filename='background.jpg') }}">
+      <DIV><table class="table-top">
+      			<tr>
+      			<td><a class="font-head" href="{{ url_for('post_management.club_info') }}">{{ session['username'] }}</a></td>
+      			<td><a class="font-head" href="{{ url_for('post_management.home') }}">Create Post</a></td>
+      			<td><a class="font-head" href="{{ url_for('post_management.all_posts') }}">View post</a></td>
+      			<td><a class="font-head" href="{{ url_for('user_management.logout') }}">Logout</a></td
+      			</tr>
+      			</table>
+      <P >
       {% if msg %}
          <p class="error" align="center">{{ msg }}</p>
          {% endif %}<br>
-      <div class="post-box">
-         <p><a class="font1" href="{{ url_for('post_management.home') }}">Create Post</a> / <a class="font1" href="{{ url_for('post_management.all_posts') }}">Edit post</a>
+    <div align="center">
+      <div class="post-box" align="left">
          <FORM CLASS="font2" action="{{ url_for('post_management.new_post') }}" method="post" NAME="POST">
-            <p><label class="font1" for="evntn">Event Name : </label> <input id="evntn" class="form" type="text" name="event-name" placeholder="" required>
-            <p><label class="font1" for="date">Date(YYYY-MM-DD) : </label> <input id="date" class="form2" type="text" name="date" placeholder="" required>
-            <p><label class="font1" for="time">Time(HH:MM:SS) : </label> <input id="time" class="form2" type="text" name="time" placeholder="" required>
-            <p><label class="font1" for="place">Place :</label> <input id="place" class="form2" type="text" name="place" placeholder="" required>
-            <p class="font1" for="about">About the event : 
-            <p><textarea rows="10" cols="100" class="form1" name="about" placeholder="" required style="margin-left: 5%"></textarea></p>
+         	<table>
+            <tr><td class="font1" height="50">Event Name :</td><td><input id="evntn" class="form" type="text" name="event-name" placeholder="" required></td></tr>
+            <tr><td class="font1" height="50">Date(YYYY-MM-DD) : </td><td> <input id="date" class="form" type="text" name="date" placeholder="" required></td></tr>
+            <tr><td class="font1" height="50">Time(HH:MM:SS) : </td><td> <input id="time" class="form" type="text" name="time" placeholder="" required></td></tr>
+            <tr><td class="font1" height="50">Place :</td><td> <input id="place" class="form" type="text" name="place" placeholder="" required></td></tr>
+            <tr><td class="font1" height="100">About the event :</td> 
+            <td><textarea rows="5" cols="100" class="form" name="about" placeholder="" required style="width:100%;height:100%;"></textarea></td></tr>
 <!--
             <p><label class="font1" for="img">Attachment :</label> <input id="img" type="file" name="img" value="Choose File">
 -->
-			<p><label class="font1" for="place">Event Image Link :</label> <input id="place" class="form2" type="text" name="image-link" placeholder="" required>
-            <p class="font1">Event Manager</p>
-            <p><label class="font1" for="co1">Name :  </label> <input id="co1" class="form3" type="text" name="name">
-            <p><label class="font1" for="phno">Number :</label> <input id="phno" class="form2" type="text" name="phno">
+			<tr><td class="font1" height="50">Event Image Link :</td><td> <input id="place" class="form" type="text" name="image-link" placeholder="" required></td></tr>
+            <tr><td class="font1" height="50"> Event Manager :  </td><td> <input id="co1" class="form" type="text" name="name"></td></tr>
+            <tr><td class="font1" height="50">Number :</td><td> <input id="phno" class="form" type="text" name="phno"></td></tr>
+            </table>
             <div align="center">
                <INPUT class="button" TYPE="Submit" VALUE="Post">
             </div>
          </form>
       </div>
+    </div>
+    
+<DIV CLASS="head-box font-foot">Contact us   |   Lazycoders </DIV>
    </body>
 </html>
 
