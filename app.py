@@ -1,5 +1,6 @@
 from flask import Flask, jsonify,render_template, request, g, session, flash, redirect, url_for, abort, escape
 import MySQLdb
+# import psychopg2
 import os
 from info_api import info_api
 from user_management import user_management
