@@ -26,11 +26,13 @@ info_api = Blueprint('info_api', __name__)
 def get_result(timestamp,club_name):
 	
 	if timestamp!=0:
+		ts=str(timestamp)
+		timestamp=''+ts[:4]+'-'+ts[4:6]+'-'+ts[6:8]+'T'+ts[8:10]+':'+ts[10:12]+':'+ts[12:14]
 		if club_name!='':
-			g.cur.execute("select * from posts where timestamp>%s and club_name='%s'"%(timestamp,club_name))
+			g.cur.execute("select * from posts where timestamp>'%s' and club_name='%s'"%(timestamp,club_name))
 		
 		else:
-			g.cur.execute("select * from posts where timestamp>%s"%(timestamp) )
+			g.cur.execute("select * from posts where timestamp>'%s'"%(timestamp) )
 		
 		result=g.cur.fetchall()
 		return result
@@ -46,7 +48,7 @@ def get_result(timestamp,club_name):
 			if no_of_rows<20:
 				g.cur.execute("select * from posts")
 			else:
-				g.cur.execute("select * from posts limit %d,%d"% (no_of_rows-20,20))
+				g.cur.execute("select * from posts limit %d offset %d"% (20,no_of_rows-20))
 		
 		else:
 			g.cur.execute("select * from posts where club_name='%s'"%(club_name))
@@ -76,7 +78,8 @@ def get_posts():
 		'event_name':post[2],
 		'post_body':post[3],
 		'event_date':post[4].isoformat(),
-		'event_time':(datetime.datetime.min + post[5]).time().isoformat(),
+		# 'event_time':(datetime.datetime.min + post[5]).time().isoformat(),
+		'event_time':post[5].isoformat(),
 		'event_venue':post[6],
 		'image_link':post[7],
 		'club_logo':logo
