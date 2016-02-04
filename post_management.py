@@ -48,21 +48,20 @@ def new_post():
 		event_manager_phoneno=request.form['phno']
 		event_image=request.form['image-link']
 		
-		g.cur.execute("INSERT INTO `all_posts`.`posts` (\
-`timestamp` ,\
-`club_name` ,\
-`event_name` ,\
-`post_body` ,\
-`event_date` ,\
-`event_time` ,\
-`event_venue` ,\
-`image_link` ,\
-`event_manager` ,\
-`evnt_mngr_phno`\
+		g.cur.execute("INSERT INTO posts (\
+club_name ,\
+event_name ,\
+post_body ,\
+event_date ,\
+event_time ,\
+event_venue ,\
+image_link ,\
+event_manager ,\
+evnt_mngr_phno\
 )\
 VALUES (\
 \
-CURRENT_TIMESTAMP , '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'\
+'%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'\
 )"%(session['username'],event_name,event_description,event_date,event_time,event_venue,event_image,event_manager_name,event_manager_phoneno) )
 		
 		g.db.commit()

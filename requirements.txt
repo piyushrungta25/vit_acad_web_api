@@ -5,4 +5,4 @@ Jinja2==2.8
 MarkupSafe==0.23
 Werkzeug==0.11.3
 wheel==0.24.0
-http://sourceforge.net/projects/mysql-python/files/latest/download?source=typ_redirect
+psycopg2==2.6.1
