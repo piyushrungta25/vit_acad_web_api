@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title> VIT clubs portal </title>
+  <LINK REL =Stylesheet TYPE ="text/css" HREF ="{{ url_for('static', filename='home.css') }}">
+  </head>
+  <body background="{{ url_for('static', filename='background.jpg') }}">
+    <DIV><table class="table-top">
+      <tr>
+        <td><a class="font-head" href="{{ url_for('post_management.club_info') }}">{{ session['username'] }}</a></td>
+        <td><a class="font-head" href="{{ url_for('post_management.home') }}">Create Post</a></td>
+        <td><a class="font-head" href="{{ url_for('post_management.all_posts') }}">View post</a></td>
+        <td><a class="font-head" href="{{ url_for('user_management.logout') }}">Logout</a></td
+        </tr>
+      </table>
+      <P >
+        {% if msg %}
+        <p class="error" align="center">{{ msg }}</p>
+        {% endif %}<br>
+        <div align="center">
+          <div class="post-box" align="left">
+            <FORM CLASS="font2" action="{{ url_for('post_management.update_post') }}" method="post" NAME="POST">
+              <table>
+                <!-- check if page is called without post -->
+                <tr><td class="font1" height="50">Event Name :</td><td><input id="evntn" class="form" type="text" name="event-name" placeholder="" value="{{post[2]}}" required></td></tr>
+                <tr><td class="font1" height="50">Date(YYYY-MM-DD) : </td><td> <input id="date" class="form" type="text" name="date" placeholder="" value="{{post[4]}}" required></td></tr>
+                <tr><td class="font1" height="50">Time(HH:MM:SS) : </td><td> <input id="time" class="form" type="text" name="time" placeholder="" value="{{post[5]}}" required></td></tr>
+                <tr><td class="font1" height="50">Place :</td><td> <input id="place" class="form" type="text" name="place" placeholder="" value="{{post[6]}}" required></td></tr>
+                <tr><td class="font1" height="100">About the event :</td>
+                  <td><textarea rows="5" cols="100" class="form" name="about" placeholder="" required style="width:100%;height:100%;">{{post[3]}}</textarea></td></tr>
+                  <!--
+                  <p><label class="font1" for="img">Attachment :</label> <input id="img" type="file" name="img" value="Choose File">
+                -->
+                <input id="timestamp" type="text" name="timestamp" placeholder="" style="display: none" value="{{ post[0] }}">
+                <tr><td class="font1" height="50">Event Image Link :</td><td> <input id="place" class="form" type="text" name="image-link" placeholder="" value="{{post[7]}}" required></td></tr>
+                <tr><td class="font1" height="50"> Event Manager :  </td><td> <input id="co1" class="form" type="text" name="name" value="{{post[8]}}"></td></tr>
+                <tr><td class="font1" height="50">Number :</td><td> <input id="phno" class="form" type="text" name="phno" value="{{post[9]}}"></td></tr>
+              </table>
+              <div align="center">
+                <INPUT class="button" TYPE="Submit" VALUE="Update">
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <DIV CLASS="head-box font-foot">Contact us   |   Lazycoders </DIV>
+        </body>
+        </html>
