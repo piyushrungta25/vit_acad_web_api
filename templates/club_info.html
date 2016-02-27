@@ -4,8 +4,8 @@
       <title> VIT clubs portal - {{ session['username'] }}</title>
       <LINK REL =Stylesheet TYPE ="text/css" HREF ="{{ url_for('static', filename='club_info.css') }}">
    </head>
-   
-   
+
+
    <body background="{{ url_for('static', filename='background.jpg') }}">
    <DIV><table class="table-top">
       			<tr>
@@ -16,6 +16,9 @@
       			</tr>
       			</table>
    </DIV>
+   {% if msg %}
+<p class="error" align="center">{{ msg }}</p>
+{% endif %}<br>
    <DIV align="center">
    	<DIV class="info-box">
 	   <SPAN class="info-font space1" align="center">{{ session['username'] }}</SPAN>
@@ -23,20 +26,20 @@
 	   		<FORM CLASS="font2" action="{{ url_for('post_management.edit_info') }}" method="post" NAME="info">
 	   		<table class="space1">
 	   		<tr>
-	   		<td class="info-font" height="50">Logo : </td><td><input class="form" type="text" placeholder="" value="url({{ info[1] }})"></td></tr>
+	   		<td class="info-font" height="50">Logo : </td><td><input class="form" type="text" placeholder="" value="{{ info[1] }}" name="logo"></td></tr>
 	   		<tr>
-	   		<td class="info-font" height="50">About the club : </td><td><textarea rows="5" cols="100" class="form" type="text" placeholder="" value="{{ info[2] }}" style="width:100%;height:100%;"></textarea></td></tr>
+	   		<td class="info-font" height="50">About the club : </td><td><textarea rows="5" cols="100" class="form" type="text" placeholder=""  style="width:100%;height:100%;",name="about">{{ info[2] }}</textarea></td></tr>
 	   		<tr>
-	   		<td class="info-font" height="50">Website : </td><td><input class="form" type="text" placeholder="" value="{{ info[3] }}"></td></tr>
+	   		<td class="info-font" height="50">Website : </td><td><input class="form" type="text" name="contact_info" placeholder="" value="{{info[3]}}"></td></tr>
 	   		<tr>
 	   		<td class="info-font" height="50">Facebook page : </td><td><input class="form" type="text" placeholder="" value=""></td></tr>
 	   		<tr>
-	   		<td class="info-font" height="50">Email ID : </td><td><input class="form" type="text" placeholder="" value=""></td></tr>
+	   		<td class="info-font" height="50">Email ID : </td><td><input class="form" type="text" name="email"placeholder="" value="{{info[4]}}"></td></tr>
 	   		</table>
 			<div align="center" class="space1"><INPUT class="button" TYPE="Submit" VALUE="Update"></div>
 			</form>
         </div>
-     </div>    
+     </div>
     </div>
 	</body>
 </html>

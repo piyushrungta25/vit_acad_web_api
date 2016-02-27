@@ -14,8 +14,11 @@
       			</tr>
       			</table>
 		</DIV>
+      {% if msg %}
+         <p class="error" align="center">{{ msg }}</p>
+         {% endif %}<br>
 	<div align="center">
-      <div class="post-box" align="left" style="overflow-y: scroll">  
+      <div class="post-box" align="left" style="overflow-y: scroll">
 	 		<ul>
 		 	{% if entries %}
   			{% for entry in entries %}
@@ -24,8 +27,8 @@
     		<table>
     		<tr>
     		<td class="font1" width="43%" style="padding:10px"><img src="{{ entry[7] }}" width="256" height="256"></td>
-    		<td class="font1" width="43%" style="padding:10px"><br>{{ entry[2] }}</br><br>{{ entry[4] }}</br><br>{{ entry[5] }}</br><br>{{ entry[6] }}
-    		<br><input id="timestamp" type="text" name="timestamp" placeholder="" style="display: none" value="{{ entry[0] }}"></br></td>
+    		<td class="font1" width="43%" style="padding:10px"><br>{{ entry[2] }}</br><br>{{ entry[4] }} {{ entry[5] }}</br><br>{{ entry[6] }}
+    		<br><br>{{entry[3]}}<br><br>{{entry[8]}}<br><br>{{entry[9]}}<input id="timestamp" type="text" name="timestamp" placeholder="" style="display: none" value="{{ entry[0] }}"></br></td>
    			<td class="font1" width="43%" style="padding:10px" ><INPUT class="button" TYPE="Submit" VALUE="Edit"></td>
     		</tr>
     		</table>
@@ -38,7 +41,7 @@
   			</ul>
 	</div>
    </DIV>
-   
+
 <DIV CLASS="head-box font-foot">Contact us   |   Lazycoders </DIV>
 	</body>
 </html>

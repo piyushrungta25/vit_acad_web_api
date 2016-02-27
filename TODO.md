@@ -1,4 +1,4 @@
-##Web interface
+## Web interface
 
 * Error checking and handling
 * Input validation and purging
@@ -6,4 +6,3 @@
 * logging functionality
 * asthetics
 * editing page
-

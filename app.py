@@ -18,8 +18,6 @@ app.register_blueprint(user_management)
 app.register_blueprint(post_management)
 
 
-
-
 def connect_db():
 	urlparse.uses_netloc.append("postgres")
 	url = urlparse.urlparse(os.environ["DATABASE_URL"])
@@ -32,7 +30,7 @@ def connect_db():
 		port=url.port
 	)
 
-	
+
 	cur=db.cursor()
 	return (db,cur)
 
